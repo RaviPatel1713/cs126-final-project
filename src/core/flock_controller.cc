@@ -18,7 +18,14 @@ void FlockController::Draw() const {
 }
 
 void FlockController::Update() {
-  for()
+  for(Boid &current_boid : flock){
+    vec2 resultant = vec2(0, 0);
+    resultant += cohesion_.CalculateCohesionAdjustment(current_boid);
+    resultant += avoidance_.CalculateSeparationAdjustment(current_boid);
+    resultant += alignment_.CalculateAlignmentAdjustment(current_boid);
+    current_boid.ApplyForce(resultant);
+    current_boid.Update();
+  }
 }
 
 int FlockController::GetSize() { return 0; }

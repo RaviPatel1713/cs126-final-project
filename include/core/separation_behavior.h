@@ -9,7 +9,7 @@ public:
   SeparationBehavior() = default;
   SeparationBehavior(bool avoidance_behavior_enabled);
 
-  vec2 CalculateSeparationAdjustment(const Boid &boid);
+  vec2 CalculateSeparationAdjustment(const std::vector<Boid> &flock, const Boid &boid);
 private:
   double min_separation_distance_;
 };

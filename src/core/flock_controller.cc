@@ -20,22 +20,25 @@ void FlockController::Draw() const {
 void FlockController::Update() {
   for(Boid &current_boid : flock){
     vec2 resultant = vec2(0, 0);
-    resultant += cohesion_.CalculateCohesionAdjustment(current_boid);
-    resultant += avoidance_.CalculateSeparationAdjustment(current_boid);
-    resultant += alignment_.CalculateAlignmentAdjustment(current_boid);
+    resultant += cohesion_.CalculateCohesionAdjustment(flock, current_boid);
+    resultant += avoidance_.CalculateSeparationAdjustment(flock, current_boid);
+    resultant += alignment_.CalculateAlignmentAdjustment(flock, current_boid);
     current_boid.ApplyForce(resultant);
     current_boid.Update();
   }
 }
 
-int FlockController::GetSize() { return 0; }
+int FlockController::GetSize() { return flock.size(); }
 
-Boid FlockController::GetBoid(size_t index) { return Boid(); }
-
-void FlockController::AddBoid(const vec2 &location) {}
-
-void FlockController::AddBoid(const Boid &) {
-  flock.push_back(Boid());
+Boid FlockController::GetBoid(size_t index) {
+  if(index >= flock .size()){
+    throw std::invalid_argument("Index is out-of-bound for current flock.");
+  }
+  return flock.at(index);
 }
+
+void FlockController::AddBoid(const vec2 &location) { AddBoid(Boid(location)); }
+
+void FlockController::AddBoid(const Boid &) { flock.emplace_back(); }
 
 } // namespace boids_flocking

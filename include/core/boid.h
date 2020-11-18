@@ -14,6 +14,11 @@ public:
   void Update();
   void ApplyForce(const vec2 &force);
 
+
+  // accessor methods
+  vec2 GetPosition() const;
+  vec2 GetVelocity() const;
+  vec2 GetAcceleration() const;
 private:
   vec2 position_;
   vec2 velocity_;

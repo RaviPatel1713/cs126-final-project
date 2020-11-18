@@ -8,7 +8,7 @@ SeparationBehavior::SeparationBehavior(bool avoidance_behavior_enabled) {
   }
 }
 
-vec2 SeparationBehavior::CalculateSeparationAdjustment(const Boid &boid) {
+vec2 SeparationBehavior::CalculateSeparationAdjustment(const std::vector<Boid> &flock, const Boid &boid) {
   //TODO: Add code to calculate the vector to move away from neighboring boids
   // too close
   return glm::vec2();

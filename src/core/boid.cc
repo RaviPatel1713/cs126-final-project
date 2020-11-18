@@ -32,4 +32,10 @@ void Boid::ApplyForce(const vec2 &force) {
 void Boid::Draw() const {}
 
 void Boid::Update() { position_ += velocity_; }
+
+vec2 Boid::GetPosition() const { return position_; }
+
+vec2 Boid::GetVelocity() const { return velocity_; }
+
+vec2 Boid::GetAcceleration() const { return acceleration_; }
 } // namespace boids_flocking

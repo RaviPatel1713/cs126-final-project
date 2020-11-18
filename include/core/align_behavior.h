@@ -11,7 +11,7 @@ public:
   AlignmentBehavior() = default;
   AlignmentBehavior(bool align_bahavior_enabled);
 
-  vec2 CalculateAlignmentAdjustment(const Boid &boid);
+  vec2 CalculateAlignmentAdjustment(const std::vector<Boid> &flock, const Boid &boid);
 private:
   bool align_bahavior_enabled_;
 };

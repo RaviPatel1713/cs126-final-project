@@ -7,8 +7,11 @@ using glm::vec2;
 
 class Boid {
 public:
-  Boid() = default;
+  Boid();
   Boid(const vec2 &pos);
+
+  void Draw() const;
+  void Update();
   void ApplyForce(const vec2 &force);
 
 private:
